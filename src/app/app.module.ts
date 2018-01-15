@@ -9,12 +9,17 @@ import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 
+import { AuthService } from './service/auth/auth.service';
+import { LoginGuardService } from './login/login-guard.service';
+import { CallbackComponent } from './callback/callback.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    HomeComponent
+    HomeComponent,
+    CallbackComponent
   ],
   imports: [
     BrowserModule,
@@ -23,7 +28,10 @@ import { HomeComponent } from './home/home.component';
     HttpModule,
     RouterModule.forRoot(ROUTES)
   ],
-  providers: [],
+  providers: [
+    AuthService,
+    LoginGuardService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
