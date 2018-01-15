@@ -12,6 +12,7 @@ import { HomeComponent } from './home/home.component';
 import { AuthService } from './service/auth/auth.service';
 import { LoginGuardService } from './login/login-guard.service';
 import { CallbackComponent } from './callback/callback.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 
 @NgModule({
@@ -19,7 +20,8 @@ import { CallbackComponent } from './callback/callback.component';
     AppComponent,
     LoginComponent,
     HomeComponent,
-    CallbackComponent
+    CallbackComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,
