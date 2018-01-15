@@ -1,18 +1,20 @@
-<main class="container grid-lg">
-  <header class="navbar">
-    <section class="navbar-section">
-      <a [routerLink]="['/']" class="navbar-brand mx-2">Get Tweets</a>
-      <a [routerLink]="['/home']" class="btn btn-link">Home</a>
-    </section>
-    <section class="navbar-section">
-      <a [routerLink]="['/login']" class="btn btn-link" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">Login</a>
-      <a class="btn btn-link" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">Logout</a>
-    </section>
-  </header>
-</main>
+<div class="main-nav bg-secondary">
+  <main class="container grid-lg">
+    <header class="navbar bg-secondary">
+      <section class="navbar-section">
+        <a [routerLink]="['/']" class="navbar-brand mx-2">Get Tweets</a>
+        <a [routerLink]="['/home']" class="btn btn-link">Home</a>
+      </section>
+      <section class="navbar-section">
+        <a [routerLink]="['/login']" class="btn btn-link" *ngIf="!auth.isAuthenticated()" (click)="auth.login()">Login</a>
+        <a class="btn btn-link" *ngIf="auth.isAuthenticated()" (click)="auth.logout()">Logout</a>
+      </section>
+    </header>
+  </main>
+</div>
 
+<div class="space1"></div>
 
 <main class="container grid-lg">
   <router-outlet></router-outlet>
 </main>
-

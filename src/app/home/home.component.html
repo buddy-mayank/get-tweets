@@ -1,3 +1,82 @@
-<p>
-  home works!
-</p>
+<h5 *ngIf="auth.isAuthenticated()">
+  Welcome to GetTweets!
+</h5>
+<form [formGroup]="getTweetForm" (ngSubmit)="getTweetsSubmit()">
+  <div class="input-group"
+    [ngClass]="{'has-error': (getTweetForm.get('username').touched ||
+    getTweetForm.get('username').dirty) &&
+    !getTweetForm.get('username').valid}">
+    <span class="input-group-addon">@</span>
+    <input type="text" class="form-input" placeholder="Twitter username" formControlName="username"/>
+    <button type="submit" class="btn btn-primary input-group-btn" *ngIf="appStatus == 0 || appStatus == 2" (ngSubmit)="save()" [disabled]="!getTweetForm.valid">Get tweets</button>
+    <button class="btn btn-primary input-group-btn loading" *ngIf="appStatus == 1">Loading</button>
+  </div>
+
+  <p class="has-error" *ngIf="(getTweetForm.get('username').touched ||
+                                          getTweetForm.get('username').dirty) &&
+                                          getTweetForm.get('username').errors">
+    <span class="form-input-hint" *ngIf="getTweetForm.get('username').errors.required">
+      Please enter username
+    </span>
+    <span class="form-input-hint" *ngIf="getTweetForm.get('username').errors.pattern">
+      Please enter only 15 character username without space and special characters (excluding _ [usderscore])
+    </span>
+  </p>
+</form>
+
+<div class="space1"></div>
+
+<div class="bg-error px-2 py-2" *ngIf='errorMessage'>{{errorMessage}}</div>
+
+<div class="columns mt-2" *ngIf="user">
+<div class="column col-xs-12 col-sm-4 col-3">
+    <div class="panel">
+        <div class="panel-header text-center">
+          <figure class="avatar avatar-lg">
+            <img [src]='user.profile_image_url' alt="Avatar">
+          </figure>
+          <div class="panel-title h5 mt-2"><a href="{{user.url}}" target="_blank">{{user.name}}</a></div>
+          <div class="panel-subtitle">@{{user.screen_name}}</div>
+        </div>
+          <ul class="tab tab-block">
+            <li class="tab-item" *ngIf="user.tweets_count">
+              <p>
+                <span class="h6">Tweets</span> <br/>
+                <span class="h6">{{user.tweets_count}}</span>
+              </p>
+            </li>
+            <li class="tab-item" *ngIf="user.followers_count">
+              <p>
+                <span class="h6">Followers</span> <br/>
+                <span class="h6">{{user.followers_count}}</span>
+              </p>
+            </li>
+          </ul>
+        <div class="panel-body" *ngIf="user.description">
+          <div class="tile">
+            <div class="tile-content">
+              <div class="tile-title">{{user.description}}</div>
+            </div>
+          </div>
+        </div>
+      </div>
+</div>
+
+<div class="column col-xs-12 col-sm-8 col-9">
+  <div class="panel">
+    <div class="panel-header">
+      <div class="panel-title h6">Last 10 tweets</div>
+    </div>
+    <div class="panel-body">
+      <div class="tile" *ngFor='let tweet of user.tweets'>
+        <div class="tile-content">
+          <p class="tile-subtitle">
+            {{tweet.text}}
+          </p>
+          <div class="divider"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>

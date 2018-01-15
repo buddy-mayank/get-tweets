@@ -1,1 +1,29 @@
-/* You can add global styles to this file, and also import other style files */
+/* Global Styles */
+.main-nav{
+  border-bottom: 1px solid transparent;
+  border-bottom-color: #e7e7e7;
+}
+
+.panel .tile {
+  margin: .75rem 0;
+}
+
+.space0-5{
+  height: .5rem;
+  clear: both;
+}
+
+.space1{
+  height: 1rem;
+  clear: both;
+}
+
+.space1-5{
+  height: 1.5rem;
+  clear: both;
+}
+
+.space2{
+  height: 2rem;
+  clear: both;
+}
