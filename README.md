@@ -4,4 +4,4 @@ Twitter client single-page-application (SPA) that shows the profile and 10 most 
 
 ## Home page
 
-Contain a form where visitor can fetch the last 10 tweets of user by supplying username in the textbox. 
+Contains a form where visitor can fetch the last 10 tweets of user by supplying username in the textbox. 
