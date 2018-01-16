@@ -8,4 +8,4 @@ Contains a form where visitor can fetch the last 10 tweets of user by supplying 
 
 The application is hosted on GitHub pages
 
-URL: https://sharmaguides.github.io/get-tweets/home
+URL: https://sharmaguides.github.io/get-tweets/
