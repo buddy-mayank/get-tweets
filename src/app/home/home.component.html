@@ -1,6 +1,11 @@
-<h5 *ngIf="auth.isAuthenticated()">
-  Welcome to GetTweets!
-</h5>
+<div *ngIf="auth.isAuthenticated()">
+  <h5>
+    Welcome to GetTweets!
+  </h5>
+  <p>
+    You are logged in. Please enter the twitter username in the textbox given below to get the last 10 tweets by user.
+  </p>
+</div>
 <form [formGroup]="getTweetForm" (ngSubmit)="getTweetsSubmit()">
   <div class="input-group"
     [ngClass]="{'has-error': (getTweetForm.get('username').touched ||
@@ -16,10 +21,13 @@
                                           getTweetForm.get('username').dirty) &&
                                           getTweetForm.get('username').errors">
     <span class="form-input-hint" *ngIf="getTweetForm.get('username').errors.required">
-      Please enter username
+      Please enter username.
     </span>
     <span class="form-input-hint" *ngIf="getTweetForm.get('username').errors.pattern">
-      Please enter only 15 character username without space and special characters (excluding _ [usderscore])
+      Please enter username without space and special characters (excluding _ [underscore]).
+    </span>
+    <span class="form-input-hint" *ngIf="getTweetForm.get('username').errors.maxlength">
+      Twitter username cannot exceed 15 characters.
     </span>
   </p>
 </form>

@@ -29,7 +29,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit() {
     this.getTweetForm = this.fb.group({
-      username: ['', [Validators.required, Validators.maxLength(15), Validators.pattern('[a-zA-Z0-9_]{1,15}')]]
+      username: ['', [Validators.required, Validators.maxLength(15), Validators.pattern('[a-zA-Z0-9_]+')]]
     });
 
     this.sub = this.route.queryParams.subscribe( params => {
@@ -55,13 +55,13 @@ export class HomeComponent implements OnInit {
       data => {
         this.errorMessage = '';
         this.user = data.data.twitter.user;
+        console.log(this.user);
         this.appStatus = 2;
       },
       error => {
         this.user = null;
-        this.appStatus = 2;
         this.errorMessage = error.message.split(':').pop();
-        console.log(this.errorMessage);
+        this.appStatus = 2;
       });
   }
 }
