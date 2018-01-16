@@ -21,9 +21,9 @@ export class HomeComponent implements OnInit {
   private sub: Subscription;
   public appStatus = 0; /* 0(initial state), 1 (loading), 2 (loading complete) */
 
-  constructor(private auth: AuthService,
-    private route: ActivatedRoute,
-    private fb: FormBuilder,
+  constructor(public auth: AuthService,
+    public route: ActivatedRoute,
+    public fb: FormBuilder,
     public tweetService: UserTweetsService) {
   }
 
