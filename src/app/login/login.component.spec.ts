@@ -5,10 +5,12 @@ import { LoginComponent } from './login.component';
 import { AuthService } from '../service/auth/auth.service';
 
 describe('LoginComponent', () => {
-  let component: LoginComponent;
+  let loginComponent: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
 
+
   beforeEach(async(() => {
+
     TestBed.configureTestingModule({
       imports: [
         RouterTestingModule
@@ -19,14 +21,12 @@ describe('LoginComponent', () => {
       declarations: [ LoginComponent ]
     })
     .compileComponents();
+
+    fixture = TestBed.createComponent(LoginComponent);
+    loginComponent = fixture.componentInstance;
   }));
 
-  beforeEach(() => {
-    fixture = TestBed.createComponent(LoginComponent);
-    component = fixture.componentInstance;
-  });
-
   it('should create Login Component', () => {
-    expect(component).toBeTruthy();
+    expect(loginComponent).toBeTruthy();
   });
 });
