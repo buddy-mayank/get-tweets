@@ -40,7 +40,7 @@ export class UserTweetsService {
       });
     }
 
-    getUserTweet(username: string): Observable<any> {
+    getUserTweets(username: string): Observable<any> {
       return this.apollo.query<any>({
         query: getUserTweets,
         variables: {

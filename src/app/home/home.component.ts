@@ -36,6 +36,7 @@ export class HomeComponent implements OnInit {
       let username = params['username'] || 0;
 
       if (username) {
+        // set the form username field value
         this.getTweetForm.setValue({
           username: username
         });
@@ -44,18 +45,19 @@ export class HomeComponent implements OnInit {
     });
   }
 
+  /* submit form funtion */
   getTweetsSubmit(): void {
     const username: string = this.getTweetForm.get('username').value;
     this.getUserTweets(username);
   }
 
+  /* This method calls the getUserTweets() of UserTweetsService */
   getUserTweets(username): void {
     this.appStatus = 1;
-    this.tweetService.getUserTweet(username).subscribe(
+    this.tweetService.getUserTweets(username).subscribe(
       data => {
         this.errorMessage = '';
         this.user = data.data.twitter.user;
-        console.log(this.user);
         this.appStatus = 2;
       },
       error => {
